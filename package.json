@@ -1,0 +1,16 @@
+{
+  "name": "rotten-potatoes",
+  "version": "1.0.0",
+  "description": "Project: Rotten Potatoes - Movie Reviews with Express.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elliot Oliveira",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.11.12"
+  }
+}
