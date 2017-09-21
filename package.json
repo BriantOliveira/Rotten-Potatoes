@@ -9,6 +9,7 @@
   "author": "Elliot Oliveira",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "file:node_modules/body-parser",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
     "mongoose": "^4.11.12"
