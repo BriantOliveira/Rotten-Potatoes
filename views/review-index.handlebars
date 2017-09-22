@@ -1,6 +1,9 @@
-<h1>Projects</h1>
-<a href="/reviews/new">New Reviews</a>
-
+<h1>Reviews</h1>
     {{#each reviews}}
-    <h3>{{this.title}}</h3>
+    <a href="/reviews/{{this._id}}">
+        <h5>{{this.title}}</h5>
+        <small>{{this.movieTitle}}</small>
+        <p>{{this.description}}</p>
+        <small>{{this.rating}}</small>
+    </a>
     {{/each}}

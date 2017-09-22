@@ -36,23 +36,23 @@ app.get('/', function (req, res) {
 //Index
 app.get('/', function(req, res) {
     // res.render('reviews-index', {reviews: reviews});
-    Review.find(function(err, reviews) {
+    Reviews.find(function(err, reviews) {
         res.render('reviews-index', {reviews: reviews});
     })
 });
 
 //Use bluebird
-mongoose.Promise = require('bluebird');
+// mongoose.Promise = require('bluebird');
 //Connection to the database
-mongoose.connect(process.env.MONGOODB_URI || 'mongodb://localhost/rotten-potatoes', {
+mongoose.connect('mongodb://localhost/rotten-potatoes', {
     useMongoClient: true,
 });
 
-var Reviews = mongoose.model('Review', {
+var Reviews = mongoose.model('reviews-new', {
     title: String,
     description: String,
     movieTitle: String,
-    rating: Number
+    rating: String,
 });
 
 //Setting up templating engine
@@ -67,16 +67,40 @@ app.get('/reviews/new', function(req, res) {
     res.render('reviews-new', {});
 })
 
-//Create
-app.post('/reviews', function (req, res) {
-    Reviews.create(req.body, function(err, review) {
-        console.log(review);
+app.get('/reviews', function (req, res) {
+    // find reviews
+    Reviews.find({}).then((reviews)=> {
+        res.render('review-index', { reviews });
+    });
 
-        res.render('/');
-        // res.render('review-index');
+})
+
+//Create
+app.post('/review', function (req, res) {
+
+    Reviews.create(req.body, function(err, review) {
+        if(err){
+            console.dir(err);
+            return;
+        }
+
+        console.dir(review)
+        // res.render('/');
+        res.writeHead(302, {
+          'Location': './reviews/' + review.id
+          //add other headers here...
+        });
+        res.end();
     })
     // res.render('reviews-new', {});
 })
+
+//Show
+app.get('/reviews/:id', function(req, res) {
+    Reviews.findById(req.params.id).exec(function (err, reviews) {
+        res.render('reviews-show', {reviews: reviews});
+    })
+});
 
 
 app.listen(port);

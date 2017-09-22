@@ -1,26 +1,33 @@
 <legend>New Reviews</legend>
-<form method="POST" action="/reviews">
+<form method="POST" action="/review">
 
     <p>
         <label for="title">Title</label><br>
         <input type="text" name="title" />
     </p>
+
     <p>
-        <label for="movieTitle">Movie Title</label><br>
+        <label for=movieTitle>Movie Title</label><br>
+        <input type="text" name="movieTitle" />
+    </p>
+
+    <p>
+        <label for="description">Description</label><br>
         <textarea name="description" rows="10" /></textarea>
     </p>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <div class="container">
 
-  <select name="" id="cusSelectbox">
+  <select name="rating" id="cusSelectbox">
     <option value="rating">Rating</option>
-    <option value="1Star">1</option>
-    <option value="2Star">2</option>
-    <option value="3Star">3</option>
-    <option value="4Star">4</option>
-    <option value="5Start">5</option>
+    <option value="1 Star">1</option>
+    <option value="2 Stars">2</option>
+    <option value="3 Stars">3</option>
+    <option value="4 Stars">4</option>
+    <option value="5 Starts">5</option>
   </select>
-  </div>
+</div>
     <p>
         <button type="submit">Save Review</button>
     </p>
